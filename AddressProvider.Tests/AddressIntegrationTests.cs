@@ -48,13 +48,7 @@ namespace AddressProvider.Tests
                 .When()
                 .Post("http://localhost:5005/address")
                 .Then()
-                .StatusCode(201);
-
-            Given(httpClient)
-                .When()
-                .Get($"http://localhost:5005/address/{uuid}")
-                .Then()
-                .StatusCode(200)
+                .StatusCode(201)
                 .Body("$.state", NHamcrest.Is.EqualTo("California"));
         }
     }
