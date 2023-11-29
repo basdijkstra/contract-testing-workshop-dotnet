@@ -21,7 +21,10 @@ namespace AddressProvider.Tests
             using var verifier = new PactVerifier(new PactVerifierConfig());
             var pactFolder = new DirectoryInfo(Path.Join("..", "..", "..", "pacts"));
             verifier.ServiceProvider("address_provider", new Uri(PactServiceUri))
-                .WithDirectorySource(pactFolder)
+                .WithPactBrokerSource(new Uri("https://ota.pactflow.io"), options =>
+                {
+                    options.TokenAuthentication("HbtH0tZq7CU4d18JlKR2kA").PublishResults("1.0.0");
+                })
                 .WithProviderStateUrl(new Uri($"{PactServiceUri}/provider-states"))
                 .Verify();
         }
