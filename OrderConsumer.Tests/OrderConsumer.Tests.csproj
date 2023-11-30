@@ -21,8 +21,4 @@
     <ProjectReference Include="..\OrderConsumer\OrderConsumer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="pacts\" />
-  </ItemGroup>
-
 </Project>
